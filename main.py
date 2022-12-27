@@ -94,7 +94,7 @@ Y = convert_to_bipolar(np.array(Y))
 
 W = create_weights(X, Y)
 
-image = mpimg.imread("reference_data/0.bmp")
+image = mpimg.imread("test_data/2_2.bmp")
 raw_data = np.array(image)
 input_vector_data = convert_to_bipolar(input_data_to_vector(raw_data))
 # print(np.array_equal(X[1], input_vector_data))

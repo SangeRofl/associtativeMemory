@@ -34,6 +34,17 @@ def convert_to_bipolar(matrix):
     return matrix
 
 
+def convert_to_binary(matrix):
+    if len(matrix.shape) == 1:
+        for i in range(matrix.shape[0]):
+            matrix[i] = 1 if matrix[i] > 0 else 0
+    else:
+        for i in range(matrix.shape[0]):
+            for j in range(matrix.shape[1]):
+                matrix[i, j] = 1 if matrix[i, j] > 0 else 0
+    return matrix
+
+
 def input_data_to_vector(matrix):
     res = np.array([])
     for i in range(matrix.shape[0]):
@@ -94,11 +105,12 @@ Y = convert_to_bipolar(np.array(Y))
 
 W = create_weights(X, Y)
 
-image = mpimg.imread("test_data/2_2.bmp")
+image = mpimg.imread("test_data/1_1.bmp")
 raw_data = np.array(image)
 input_vector_data = convert_to_bipolar(input_data_to_vector(raw_data))
 # print(np.array_equal(X[1], input_vector_data))
 y, x = main_work(input_vector_data, W)
 plt.imshow(x.reshape(74, 51))
 plt.show()
+y =vec_in_digit(convert_to_binary(y))
 print(y)
